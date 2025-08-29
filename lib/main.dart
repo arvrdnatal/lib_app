@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lib_app/core/routes/routes.dart';
 import 'package:lib_app/domain/injections/injections.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        textTheme: GoogleFonts.gentiumBookPlusTextTheme(),
       ),
       routerDelegate: routes.routerDelegate,
       routeInformationParser: routes.routeInformationParser,

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SplashState {
 
- int get seconds; SplashFinalState? get auth;
+ int get seconds; String get status; SplashFinalState? get auth;
 /// Create a copy of SplashState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $SplashStateCopyWith<SplashState> get copyWith => _$SplashStateCopyWithImpl<Spla
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SplashState&&(identical(other.seconds, seconds) || other.seconds == seconds)&&(identical(other.auth, auth) || other.auth == auth));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SplashState&&(identical(other.seconds, seconds) || other.seconds == seconds)&&(identical(other.status, status) || other.status == status)&&(identical(other.auth, auth) || other.auth == auth));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,seconds,auth);
+int get hashCode => Object.hash(runtimeType,seconds,status,auth);
 
 @override
 String toString() {
-  return 'SplashState(seconds: $seconds, auth: $auth)';
+  return 'SplashState(seconds: $seconds, status: $status, auth: $auth)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $SplashStateCopyWith<$Res>  {
   factory $SplashStateCopyWith(SplashState value, $Res Function(SplashState) _then) = _$SplashStateCopyWithImpl;
 @useResult
 $Res call({
- int seconds, SplashFinalState? auth
+ int seconds, String status, SplashFinalState? auth
 });
 
 
@@ -62,10 +62,11 @@ class _$SplashStateCopyWithImpl<$Res>
 
 /// Create a copy of SplashState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? seconds = null,Object? auth = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? seconds = null,Object? status = null,Object? auth = freezed,}) {
   return _then(_self.copyWith(
 seconds: null == seconds ? _self.seconds : seconds // ignore: cast_nullable_to_non_nullable
-as int,auth: freezed == auth ? _self.auth : auth // ignore: cast_nullable_to_non_nullable
+as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as String,auth: freezed == auth ? _self.auth : auth // ignore: cast_nullable_to_non_nullable
 as SplashFinalState?,
   ));
 }
@@ -148,10 +149,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int seconds,  SplashFinalState? auth)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int seconds,  String status,  SplashFinalState? auth)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SplashState() when $default != null:
-return $default(_that.seconds,_that.auth);case _:
+return $default(_that.seconds,_that.status,_that.auth);case _:
   return orElse();
 
 }
@@ -169,10 +170,10 @@ return $default(_that.seconds,_that.auth);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int seconds,  SplashFinalState? auth)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int seconds,  String status,  SplashFinalState? auth)  $default,) {final _that = this;
 switch (_that) {
 case _SplashState():
-return $default(_that.seconds,_that.auth);}
+return $default(_that.seconds,_that.status,_that.auth);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -186,10 +187,10 @@ return $default(_that.seconds,_that.auth);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int seconds,  SplashFinalState? auth)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int seconds,  String status,  SplashFinalState? auth)?  $default,) {final _that = this;
 switch (_that) {
 case _SplashState() when $default != null:
-return $default(_that.seconds,_that.auth);case _:
+return $default(_that.seconds,_that.status,_that.auth);case _:
   return null;
 
 }
@@ -201,10 +202,11 @@ return $default(_that.seconds,_that.auth);case _:
 
 
 class _SplashState implements SplashState {
-  const _SplashState({required this.seconds, this.auth});
+  const _SplashState({required this.seconds, required this.status, this.auth});
   
 
 @override final  int seconds;
+@override final  String status;
 @override final  SplashFinalState? auth;
 
 /// Create a copy of SplashState
@@ -217,16 +219,16 @@ _$SplashStateCopyWith<_SplashState> get copyWith => __$SplashStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SplashState&&(identical(other.seconds, seconds) || other.seconds == seconds)&&(identical(other.auth, auth) || other.auth == auth));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SplashState&&(identical(other.seconds, seconds) || other.seconds == seconds)&&(identical(other.status, status) || other.status == status)&&(identical(other.auth, auth) || other.auth == auth));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,seconds,auth);
+int get hashCode => Object.hash(runtimeType,seconds,status,auth);
 
 @override
 String toString() {
-  return 'SplashState(seconds: $seconds, auth: $auth)';
+  return 'SplashState(seconds: $seconds, status: $status, auth: $auth)';
 }
 
 
@@ -237,7 +239,7 @@ abstract mixin class _$SplashStateCopyWith<$Res> implements $SplashStateCopyWith
   factory _$SplashStateCopyWith(_SplashState value, $Res Function(_SplashState) _then) = __$SplashStateCopyWithImpl;
 @override @useResult
 $Res call({
- int seconds, SplashFinalState? auth
+ int seconds, String status, SplashFinalState? auth
 });
 
 
@@ -254,10 +256,11 @@ class __$SplashStateCopyWithImpl<$Res>
 
 /// Create a copy of SplashState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? seconds = null,Object? auth = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? seconds = null,Object? status = null,Object? auth = freezed,}) {
   return _then(_SplashState(
 seconds: null == seconds ? _self.seconds : seconds // ignore: cast_nullable_to_non_nullable
-as int,auth: freezed == auth ? _self.auth : auth // ignore: cast_nullable_to_non_nullable
+as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as String,auth: freezed == auth ? _self.auth : auth // ignore: cast_nullable_to_non_nullable
 as SplashFinalState?,
   ));
 }

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lib_app/core/routes/route_names.dart';
 import 'package:lib_app/domain/injections/injections.dart';
 import 'package:lib_app/ui/features/splash/splash_state.dart';
+import 'package:lib_app/ui/shared/logo_app/logo_app_widget.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -19,23 +20,30 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: BlocConsumer<SplashBloc, SplashState>(
-            bloc: _bloc,
-            builder: (context, state) {
-              return Text("Splash Page ${state.seconds}");
-            },
-            listener: (context, state) {
-              switch (state.auth) {
-                case SplashFinalState.authenticated:
-                  GoRouter.of(context).go(Routes.home.path);
-                case SplashFinalState.unauthenticated:
-                  GoRouter.of(context).go(Routes.home.path);
-                case null:
-                  _bloc.counter();
-              }
-            },
-          ),
+        child: BlocConsumer<SplashBloc, SplashState>(
+          bloc: _bloc,
+          builder: (context, state) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                LogoAppWidget(),
+                Text(
+                  state.status,
+                  style: Theme.of(context).textTheme.bodySmall,
+                )
+              ],
+            );
+          },
+          listener: (context, state) {
+            switch (state.auth) {
+              case SplashFinalState.authenticated:
+                GoRouter.of(context).go(Routes.home.path);
+              case SplashFinalState.unauthenticated:
+                GoRouter.of(context).go(Routes.home.path);
+              case null:
+                _bloc.counter();
+            }
+          },
         ),
       ),
     );
